@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 
 class CustomerController extends Controller
 {
+    // Menampilkan Data dari DB Customers
     public function index()
     {
         $customers = DB::table('customers')
@@ -17,7 +18,7 @@ class CustomerController extends Controller
         return $customers;
     }
 
-    // Menambah Data ke DB
+    // Menambah Data DB Customers
     public function store(Request $request)
     {
         $data = [
@@ -29,9 +30,11 @@ class CustomerController extends Controller
 
         DB::table('customers')->insert($data);
 
-        return response()->json(['pesan' => 'Data berhasil Ditambah!'], 201);
+        return response()
+            ->json(['pesan' => 'Data berhasil Ditambah!'], 201);
     }
 
+    // Mengubah Data DB Customers
     public function update(Request $request, $id)
     {
         $data = [
@@ -43,9 +46,11 @@ class CustomerController extends Controller
             ->where('id', $id)
             ->update($data);
 
-        return response()->json(['pesan' => 'Data berhasil Diupdate!'], 200);;
+        return response()
+            ->json(['pesan' => 'Data berhasil Diupdate!'], 200);
     }
 
+    // Menghapus Data DB Customers
     public function delete($id)
     {
         DB::table('customers')

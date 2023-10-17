@@ -11,7 +11,7 @@ class CustomerController extends Controller
     public function index()
     {
         $customers = DB::table('customers')
-            ->select('nama', 'umur', 'alamat', 'jenis_kelamin')
+            ->select('nama', 'umur', 'alamat', 'jk')
             // ->where('nama', 'Jono')
             // ->orderByDesc('id')
             ->get();
@@ -25,7 +25,7 @@ class CustomerController extends Controller
             'nama' => $request->nama,
             'umur' => $request->umur,
             'alamat' => $request->alamat,
-            'jenis_kelamin' => $request->jenis_kelamin
+            'jk' => $request->jk
         ];
 
         DB::table('customers')->insert($data);
